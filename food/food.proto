@@ -1,0 +1,44 @@
+// Specify the syntax version to use for the .proto file
+syntax = "proto3";
+
+// Define the package name for the generated code
+package food;
+
+// Define a service for managing foods
+service FoodService {
+  // RPC to get a food by ID
+  rpc GetFood (FoodRequest) returns (FoodResponse);
+  // RPC to create a new food
+  rpc CreateFood (FoodCreateRequest) returns (FoodResponse);
+  // RPC to update an existing food
+  rpc UpdateFood (FoodUpdateRequest) returns (FoodResponse);
+  // RPC to delete a food by ID
+  rpc DeleteFood (FoodDeleteRequest) returns (FoodResponse);
+}
+
+// Message format for a request to get a food
+message FoodRequest {
+  string id = 1;
+}
+
+// Message format for the response containing food details
+message FoodResponse {
+  string id = 1;
+  string name = 2;
+}
+
+// Message format for a request to create a new food
+message FoodCreateRequest {
+  string name = 1;
+}
+
+// Message format for a request to update an existing food
+message FoodUpdateRequest {
+  string id = 1;
+  string name = 2;
+}
+
+// Message format for a request to delete a food
+message FoodDeleteRequest {
+  string id = 1;
+}

@@ -1,0 +1,47 @@
+// Specify the syntax version to use for the .proto file
+syntax = "proto3";
+
+// Define the package name for the generated code
+package reservation;
+
+// Define a service for managing reservations
+service ReservationService {
+  // RPC to get a reservation by ID
+  rpc GetReservation (ReservationRequest) returns (ReservationResponse);
+  // RPC to create a new reservation
+  rpc CreateReservation (ReservationCreateRequest) returns (ReservationResponse);
+  // RPC to update an existing reservation
+  rpc UpdateReservation (ReservationUpdateRequest) returns (ReservationResponse);
+  // RPC to delete a reservation by ID
+  rpc DeleteReservation (ReservationDeleteRequest) returns (ReservationResponse);
+}
+
+// Message format for a request to get a reservation
+message ReservationRequest {
+  string id = 1;
+}
+
+// Message format for the response containing reservation details
+message ReservationResponse {
+  string id = 1;
+  string name = 2;
+  
+}
+
+// Message format for a request to create a new reservation
+message ReservationCreateRequest {
+  string name = 1;
+ 
+}
+
+// Message format for a request to update an existing reservation
+message ReservationUpdateRequest {
+  string id = 1;
+  string name = 2;
+
+}
+
+// Message format for a request to delete a reservation
+message ReservationDeleteRequest {
+  string id = 1;
+}
